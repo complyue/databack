@@ -9,9 +9,7 @@
   "author": "Compl Yue",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.0.0-rc.5",
     "binary-search-tree": "^0.2.6",
-    "bluebird": "^3.4.0",
     "bunyan": "^1.8.1"
   }
 }
