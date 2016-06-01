@@ -11,7 +11,7 @@ module.exports.Collection = Collection
 if (module === require.main) {
 
   const searchByAge = function (ds, msg, criteria = {},
-                                result = ds.indices.age.betweenKeyBounds(criteria)) {
+                                result = ds.indices.age.queryByKey(criteria)) {
     logger.info({criteria, result}, msg)
 
     return result
@@ -19,21 +19,21 @@ if (module === require.main) {
 
 
   const searchByBirth = function (ds, msg, criteria = {},
-                                  result = ds.indices.birth.betweenKeyBounds(criteria)) {
+                                  result = ds.indices.birth.queryByKey(criteria)) {
     logger.info({criteria, result}, msg)
     return result
   }
 
 
   const searchByBirthExample = function (ds, msg, criteria = {},
-                                         result = ds.indices.birth.betweenBounds(criteria)) {
+                                         result = ds.indices.birth.query(criteria)) {
     logger.info({criteria, result}, msg)
     return result
   }
 
 
   const searchByName = function (ds, msg, name,
-                                 result = ds.indices.name.searchByKey(name)) {
+                                 result = ds.indices.name.findByKey(name)) {
     logger.info({result, matchName: name}, msg)
     return result
   }
@@ -72,8 +72,8 @@ if (module === require.main) {
       searchByAge(ds, 'after update, age more than 28', {$gt: 28})
     }
 
-    var Compls = ds.indices.name.searchByKey('Compl')
-    var Tings = ds.indices.name.searchByKey('Ting')
+    var Compls = ds.indices.name.findByKey('Compl')
+    var Tings = ds.indices.name.findByKey('Ting')
     var todel = Compls.length > 1 ? Compls[0] : Tings.length > 1 ? Tings[0] : Compls[0]
     if (todel) {
       todel.$delete$((err, ids)=> {
