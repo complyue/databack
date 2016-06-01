@@ -2,7 +2,7 @@
   "name": "databack",
   "version": "1.1.1",
   "description": "Persistent storage backed in-memory data objects",
-  "main": "lib/databack.js",
+  "main": "databack.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
