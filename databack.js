@@ -76,6 +76,7 @@ if (module === require.main) {
     var Tings = ds.indices.name.findByKey('Ting')
     var todel = Compls.length > 1 ? Compls[0] : Tings.length > 1 ? Tings[0] : Compls[0]
     if (todel) {
+      console.log('deleting', JSON.stringify(todel))
       todel.$delete$((err, ids)=> {
         logger.info({err, ids}, 'deleted')
       })
